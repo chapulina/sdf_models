@@ -1,0 +1,221 @@
+<?xml version="1.0" ?>
+<%
+  cubie_width = 0.185
+  spacing = 0.005
+  sticker_thickness = 0.0005
+  sticker_width = cubie_width * 0.8
+
+  x_list = [-1, 0, 1]
+  y_list = [-1, 0, 1]
+  z_list = [-1, 0, 1]
+
+  # inertia
+  density = 1175
+  cubie_volume = cubie_width * cubie_width * cubie_width
+  cubie_mass = density * cubie_volume
+  cubie_ixx  = cubie_mass/12.0 * (cubie_width**2 + cubie_width**2)
+  cubie_iyy  = cubie_mass/12.0 * (cubie_width**2 + cubie_width**2)
+  cubie_izz  = cubie_mass/12.0 * (cubie_width**2 + cubie_width**2)
+
+  # materials
+  blue   = "0 0 1 1"
+  white  = "1 1 1 1"
+  red    = "1 0 0 1"
+  orange = "0.7 0.5 0.03 1"
+  green  = "0 1 0 1"
+  yellow = "1 1 0 1"
+%>
+<sdf version="1.5">
+  <model name="puzzle_ball_joints">
+    <pose>0 0 <%= cubie_width * 1.5 + 2* spacing %> 0 0 0</pose>
+    <%
+      # LINKS
+    %>
+    <%
+      x_list.each do |i|
+        x = x_list[i]
+        y_list.each do |j|
+          y = y_list[j]
+            z_list.each do |k|
+              z = z_list[k]
+              pos_x = (cubie_width + spacing) * x
+              pos_y = (cubie_width + spacing) * y
+              pos_z = (cubie_width + spacing) * z
+    %>
+    <%= "<link name=" + '"cubie_' + x.to_s + '_' + y.to_s + '_' + z.to_s + '">' %>
+      <pose><%= pos_x %> <%= pos_y %> <%= pos_z %> 0 0 0</pose>
+      <self_collide>1</self_collide>
+      <inertial>
+        <mass><%= cubie_mass %></mass>
+        <inertia>
+          <ixx><%= cubie_ixx %></ixx>
+          <iyy><%= cubie_iyy %></iyy>
+          <izz><%= cubie_izz %></izz>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyz>0</iyz>
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size><%= cubie_width %> <%= cubie_width %> <%= cubie_width %></size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size><%= cubie_width %> <%= cubie_width %> <%= cubie_width %></size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.1 0.1 0.1 1</ambient>
+          <diffuse>0.2 0.2 0.2 1</diffuse>
+          <specular>0.1 0.1 0.1 1</specular>
+          <emissive>0 0 0 1</emissive>
+        </material>
+        <%
+          # Visibility layers according to cubie type:
+          #
+          # 0: core
+          # 1: center
+          # 2: edge
+          # 3: corner
+        %>
+        <meta>
+          <layer><%= x.abs + y.abs + z.abs %></layer>
+        </meta>
+      </visual>
+
+      <%
+        # Stickers
+      %>
+      <%
+        if z.abs == 1
+          _x = 0
+          _y = 0
+          _z = z
+          color_value = z == 1 ? blue : white
+          color_name = z == 1 ? "blue" : "white"
+      %>
+        <%= "<visual name='sticker_" + color_name + "'>" %>
+          <pose>
+            <%= (cubie_width + sticker_thickness)/2.0 * _x %>
+            <%= (cubie_width + sticker_thickness)/2.0 * _y %>
+            <%= (cubie_width + sticker_thickness)/2.0 * _z %>
+            0 0 0
+          </pose>
+          <geometry>
+            <box>
+              <size>
+                <%= sticker_width * (1 - _x.abs) + sticker_thickness * _x.abs %>
+                <%= sticker_width * (1 - _y.abs) + sticker_thickness * _y.abs %>
+                <%= sticker_width * (1 - _z.abs) + sticker_thickness * _z.abs %>
+              </size>
+            </box>
+          </geometry>
+          <material>
+            <ambient><%= color_value %></ambient>
+            <diffuse><%= color_value %></diffuse>
+          </material>
+          <meta>
+            <layer><%= x.abs + y.abs + z.abs %></layer>
+          </meta>
+        </visual>
+      <% end %>
+      <%
+        if x.abs == 1
+          _x = x
+          _y = 0
+          _z = 0
+          color_value = x == 1 ? red : orange
+          color_name = x == 1 ? "red" : "orange"
+      %>
+        <%= "<visual name='sticker_" + color_name + "'>" %>
+          <pose>
+            <%= (cubie_width + sticker_thickness)/2.0 * _x %>
+            <%= (cubie_width + sticker_thickness)/2.0 * _y %>
+            <%= (cubie_width + sticker_thickness)/2.0 * _z %>
+            0 0 0
+          </pose>
+          <geometry>
+            <box>
+              <size>
+                <%= sticker_width * (1 - _x.abs) + sticker_thickness * _x.abs %>
+                <%= sticker_width * (1 - _y.abs) + sticker_thickness * _y.abs %>
+                <%= sticker_width * (1 - _z.abs) + sticker_thickness * _z.abs %>
+              </size>
+            </box>
+          </geometry>
+          <material>
+            <ambient><%= color_value %></ambient>
+            <diffuse><%= color_value %></diffuse>
+          </material>
+          <meta>
+            <layer><%= x.abs + y.abs + z.abs %></layer>
+          </meta>
+        </visual>
+      <% end %>
+      <%
+        if y.abs == 1
+          _x = 0
+          _y = y
+          _z = 0
+          color_value = y == 1 ? green : yellow
+          color_name = y == 1 ? "green" : "yellow"
+      %>
+        <%= "<visual name='sticker_" + color_name + "'>" %>
+          <pose>
+            <%= (cubie_width + sticker_thickness)/2.0 * _x %>
+            <%= (cubie_width + sticker_thickness)/2.0 * _y %>
+            <%= (cubie_width + sticker_thickness)/2.0 * _z %>
+            0 0 0
+          </pose>
+          <geometry>
+            <box>
+              <size>
+                <%= sticker_width * (1 - _x.abs) + sticker_thickness * _x.abs %>
+                <%= sticker_width * (1 - _y.abs) + sticker_thickness * _y.abs %>
+                <%= sticker_width * (1 - _z.abs) + sticker_thickness * _z.abs %>
+              </size>
+            </box>
+          </geometry>
+          <material>
+            <ambient><%= color_value %></ambient>
+            <diffuse><%= color_value %></diffuse>
+          </material>
+          <meta>
+            <layer><%= x.abs + y.abs + z.abs %></layer>
+          </meta>
+        </visual>
+      <% end %>
+    </link>
+
+    <%
+      # Ball joints from the core to each piece to hold the cube together
+      if !(x == 0 && y == 0 && z == 0)
+    %>
+      <%= "<joint name=" + '"fake_joint_' + x.to_s + '_' + y.to_s + '_' + z.to_s + '" type="ball">' %>
+        <%= "<parent>cubie_" + x.to_s + '_' + y.to_s + '_' + z.to_s + '</parent>' %>
+        <child>cubie_0_0_0</child>
+      </joint>
+    <% end %>
+
+    <%
+      # Center revolute joints
+      if (x.abs + y.abs + z.abs == 1)
+    %>
+      <%= "<joint name=" + '"center_joint_' + x.to_s + '_' + y.to_s + '_' + z.to_s + '" type="revolute">' %>
+        <parent>cubie_0_0_0</parent>
+        <%= "<child>cubie_" + x.to_s + '_' + y.to_s + '_' + z.to_s + '</child>' %>
+        <axis>
+          <xyz><%= x %> <%= y %> <%= z %></xyz>
+        </axis>
+      </joint>
+    <% end %>
+    <% end %>
+    <% end %>
+    <% end %>
+  </model>
+</sdf>
