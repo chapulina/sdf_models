@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <%
   cubie_width = 0.185
-  spacing = 0.005
+  spacing = 0.001
   sticker_thickness = 0.0005
   sticker_width = cubie_width * 0.8
 
@@ -217,5 +217,6 @@
     <% end %>
     <% end %>
     <% end %>
+    <plugin name="puzzle_model_plugin" filename="libPuzzleModelPlugin.so"/>
   </model>
 </sdf>
