@@ -1,3 +1,5 @@
+# Run
+
 1. Compile the plugins
 
   cd plugins
@@ -11,4 +13,12 @@
 
   cd ../..
   gazebo puzzle.world
+
+# TODO
+
+* Display joint angle on GUI
+
+* Force fix other center joints when applying torque to one of them (e.g. fix DRLFB when pressing U)
+
+* Hotkeys for applying force to strategic links like with the apply force dialog.
 
