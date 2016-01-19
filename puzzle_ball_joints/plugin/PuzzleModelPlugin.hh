@@ -43,6 +43,7 @@ namespace gazebo
     private: void OnL(ConstIntPtr &_msg);
     private: void OnF(ConstIntPtr &_msg);
     private: void OnB(ConstIntPtr &_msg);
+    private: void OnFix(ConstIntPtr &_msg);
 
     /// \brief Pointer to model containing the plugin.
     private: physics::ModelPtr model;
@@ -52,6 +53,7 @@ namespace gazebo
     private: physics::JointPtr lJoint;
     private: physics::JointPtr fJoint;
     private: physics::JointPtr bJoint;
+    private: physics::JointPtr worldJoint;
 
     /// \brief Node used to establish communication with gzserver.
     private: transport::NodePtr node;
@@ -61,6 +63,8 @@ namespace gazebo
     private: transport::SubscriberPtr lSub;
     private: transport::SubscriberPtr fSub;
     private: transport::SubscriberPtr bSub;
+
+    private: transport::SubscriberPtr fixSub;
   };
 }
 

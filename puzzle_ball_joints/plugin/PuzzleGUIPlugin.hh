@@ -67,6 +67,8 @@ namespace gazebo
     private slots: void OnFPrime();
     private slots: void OnBPrime();
 
+    private slots: void OnFix(const bool _checked);
+
     /// \brief Node used to establish communication with gzserver.
     private: transport::NodePtr node;
     private: transport::PublisherPtr uPub;
@@ -75,6 +77,7 @@ namespace gazebo
     private: transport::PublisherPtr lPub;
     private: transport::PublisherPtr fPub;
     private: transport::PublisherPtr bPub;
+    private: transport::PublisherPtr fixPub;
 
     private: int torque;
   };
