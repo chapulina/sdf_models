@@ -155,7 +155,7 @@ PuzzleGUIPlugin::PuzzleGUIPlugin()
   gridLayout->addWidget(new QLabel(tr("B")), 6, 0);
   {
     auto angle = new QLineEdit();
-    angle->setStyleSheet("QLineEdit{background-color : #C80}");
+    angle->setStyleSheet("QLineEdit{background-color : #FFA500}");
     angle->setEnabled(false);
     gridLayout->addWidget(angle, 6, 1);
     this->connect(this, SIGNAL(UpdateBAngle(const QString &)), angle,
@@ -173,13 +173,19 @@ PuzzleGUIPlugin::PuzzleGUIPlugin()
   }
 
   // Torque magnitude
-  this->torque = 1000;
+  this->torque = 10000;
   gridLayout->addWidget(new QLabel(tr("Torque")), 7, 2);
   auto torque = new QSpinBox();
   torque->setMaximum(1000000);
   torque->setValue(this->torque);
   gridLayout->addWidget(torque, 7, 3);
   this->connect(torque, SIGNAL(valueChanged(int)), this, SLOT(OnTorque(int)));
+
+  // Fix center
+  auto fix = new QCheckBox("Fix to world");
+  gridLayout->addWidget(fix, 8, 0, 1, 4);
+  this->connect(fix, SIGNAL(toggled(const bool)), this,
+      SLOT(OnFix(const bool)));
 
   auto mainFrame = new QFrame();
   mainFrame->setLayout(gridLayout);
@@ -188,7 +194,7 @@ PuzzleGUIPlugin::PuzzleGUIPlugin()
   mainLayout->addWidget(mainFrame);
   mainLayout->setContentsMargins(0, 0, 0, 0);
   this->setLayout(mainLayout);
-  this->resize(250, 250);
+  this->resize(250, 270);
 
   // Transport
   this->node = transport::NodePtr(new transport::Node());
@@ -200,6 +206,7 @@ PuzzleGUIPlugin::PuzzleGUIPlugin()
   this->lPub = this->node->Advertise<msgs::Int>("~/puzzle/l");
   this->fPub = this->node->Advertise<msgs::Int>("~/puzzle/f");
   this->bPub = this->node->Advertise<msgs::Int>("~/puzzle/b");
+  this->fixPub = this->node->Advertise<msgs::Int>("~/puzzle/fix");
 }
 
 /////////////////////////////////////////////////
@@ -318,5 +325,13 @@ void PuzzleGUIPlugin::OnBPrime()
   msgs::Int msg;
   msg.set_data(-this->torque);
   this->bPub->Publish(msg);
+}
+
+/////////////////////////////////////////////////
+void PuzzleGUIPlugin::OnFix(const bool _checked)
+{
+  msgs::Int msg;
+  msg.set_data(_checked);
+  this->fixPub->Publish(msg);
 }
 

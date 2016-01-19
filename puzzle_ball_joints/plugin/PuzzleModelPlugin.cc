@@ -64,6 +64,8 @@ void PuzzleModelPlugin::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
     this->node->Subscribe("~/puzzle/f", &PuzzleModelPlugin::OnF, this);
   this->bSub =
     this->node->Subscribe("~/puzzle/b", &PuzzleModelPlugin::OnB, this);
+  this->fixSub =
+    this->node->Subscribe("~/puzzle/fix", &PuzzleModelPlugin::OnFix, this);
 }
 
 /////////////////////////////////////////////////
@@ -100,4 +102,27 @@ void PuzzleModelPlugin::OnF(ConstIntPtr &_msg)
 void PuzzleModelPlugin::OnB(ConstIntPtr &_msg)
 {
   this->bJoint->SetForce(0, _msg->data());
+}
+
+/////////////////////////////////////////////////
+void PuzzleModelPlugin::OnFix(ConstIntPtr &_msg)
+{
+  bool fix = _msg->data();
+
+  if (fix)
+  {
+    this->model->SetWorldPose(math::Pose(math::Vector3(0, 0, 2), math::Quaternion()));
+
+    this->worldJoint =
+        this->model->GetWorld()->GetPhysicsEngine()->CreateJoint("fixed",
+        this->model);
+
+    auto core = this->model->GetLink("cubie_0_0_0");
+    this->worldJoint->Attach(0, core);
+    this->worldJoint->Load(0, core, math::Pose::Zero);
+  }
+  else
+  {
+    this->worldJoint->Detach();
+  }
 }
