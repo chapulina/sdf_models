@@ -2,11 +2,11 @@
 
 <sdf version="1.5">
   <model name="puzzle_ball_joints">
-    <pose>0 0 0.2875 0 0 0</pose>
+    <pose>0 0 0.27949999999999997 0 0 0</pose>
     
     
     <link name="cubie_1_1_1">
-      <pose>0.19 0.19 0.19 0 0 0</pose>
+      <pose>0.186 0.186 0.186 0 0 0</pose>
       <self_collide>1</self_collide>
       <inertial>
         <mass>7.439659375</mass>
@@ -135,7 +135,7 @@
     
     
     <link name="cubie_1_1_-1">
-      <pose>0.19 0.19 -0.19 0 0 0</pose>
+      <pose>0.186 0.186 -0.186 0 0 0</pose>
       <self_collide>1</self_collide>
       <inertial>
         <mass>7.439659375</mass>
@@ -264,7 +264,7 @@
     
     
     <link name="cubie_1_1_0">
-      <pose>0.19 0.19 0.0 0 0 0</pose>
+      <pose>0.186 0.186 0.0 0 0 0</pose>
       <self_collide>1</self_collide>
       <inertial>
         <mass>7.439659375</mass>
@@ -369,7 +369,7 @@
     
     
     <link name="cubie_1_-1_1">
-      <pose>0.19 -0.19 0.19 0 0 0</pose>
+      <pose>0.186 -0.186 0.186 0 0 0</pose>
       <self_collide>1</self_collide>
       <inertial>
         <mass>7.439659375</mass>
@@ -498,7 +498,7 @@
     
     
     <link name="cubie_1_-1_-1">
-      <pose>0.19 -0.19 -0.19 0 0 0</pose>
+      <pose>0.186 -0.186 -0.186 0 0 0</pose>
       <self_collide>1</self_collide>
       <inertial>
         <mass>7.439659375</mass>
@@ -627,7 +627,7 @@
     
     
     <link name="cubie_1_-1_0">
-      <pose>0.19 -0.19 0.0 0 0 0</pose>
+      <pose>0.186 -0.186 0.0 0 0 0</pose>
       <self_collide>1</self_collide>
       <inertial>
         <mass>7.439659375</mass>
@@ -732,7 +732,7 @@
     
     
     <link name="cubie_1_0_1">
-      <pose>0.19 0.0 0.19 0 0 0</pose>
+      <pose>0.186 0.0 0.186 0 0 0</pose>
       <self_collide>1</self_collide>
       <inertial>
         <mass>7.439659375</mass>
@@ -836,7 +836,7 @@
     
     
     <link name="cubie_1_0_-1">
-      <pose>0.19 0.0 -0.19 0 0 0</pose>
+      <pose>0.186 0.0 -0.186 0 0 0</pose>
       <self_collide>1</self_collide>
       <inertial>
         <mass>7.439659375</mass>
@@ -940,7 +940,7 @@
     
     
     <link name="cubie_1_0_0">
-      <pose>0.19 0.0 0.0 0 0 0</pose>
+      <pose>0.186 0.0 0.0 0 0 0</pose>
       <self_collide>1</self_collide>
       <inertial>
         <mass>7.439659375</mass>
@@ -1029,7 +1029,7 @@
     
     
     <link name="cubie_-1_1_1">
-      <pose>-0.19 0.19 0.19 0 0 0</pose>
+      <pose>-0.186 0.186 0.186 0 0 0</pose>
       <self_collide>1</self_collide>
       <inertial>
         <mass>7.439659375</mass>
@@ -1158,7 +1158,7 @@
     
     
     <link name="cubie_-1_1_-1">
-      <pose>-0.19 0.19 -0.19 0 0 0</pose>
+      <pose>-0.186 0.186 -0.186 0 0 0</pose>
       <self_collide>1</self_collide>
       <inertial>
         <mass>7.439659375</mass>
@@ -1287,7 +1287,7 @@
     
     
     <link name="cubie_-1_1_0">
-      <pose>-0.19 0.19 0.0 0 0 0</pose>
+      <pose>-0.186 0.186 0.0 0 0 0</pose>
       <self_collide>1</self_collide>
       <inertial>
         <mass>7.439659375</mass>
@@ -1392,7 +1392,7 @@
     
     
     <link name="cubie_-1_-1_1">
-      <pose>-0.19 -0.19 0.19 0 0 0</pose>
+      <pose>-0.186 -0.186 0.186 0 0 0</pose>
       <self_collide>1</self_collide>
       <inertial>
         <mass>7.439659375</mass>
@@ -1521,7 +1521,7 @@
     
     
     <link name="cubie_-1_-1_-1">
-      <pose>-0.19 -0.19 -0.19 0 0 0</pose>
+      <pose>-0.186 -0.186 -0.186 0 0 0</pose>
       <self_collide>1</self_collide>
       <inertial>
         <mass>7.439659375</mass>
@@ -1650,7 +1650,7 @@
     
     
     <link name="cubie_-1_-1_0">
-      <pose>-0.19 -0.19 0.0 0 0 0</pose>
+      <pose>-0.186 -0.186 0.0 0 0 0</pose>
       <self_collide>1</self_collide>
       <inertial>
         <mass>7.439659375</mass>
@@ -1755,7 +1755,7 @@
     
     
     <link name="cubie_-1_0_1">
-      <pose>-0.19 0.0 0.19 0 0 0</pose>
+      <pose>-0.186 0.0 0.186 0 0 0</pose>
       <self_collide>1</self_collide>
       <inertial>
         <mass>7.439659375</mass>
@@ -1859,7 +1859,7 @@
     
     
     <link name="cubie_-1_0_-1">
-      <pose>-0.19 0.0 -0.19 0 0 0</pose>
+      <pose>-0.186 0.0 -0.186 0 0 0</pose>
       <self_collide>1</self_collide>
       <inertial>
         <mass>7.439659375</mass>
@@ -1963,7 +1963,7 @@
     
     
     <link name="cubie_-1_0_0">
-      <pose>-0.19 0.0 0.0 0 0 0</pose>
+      <pose>-0.186 0.0 0.0 0 0 0</pose>
       <self_collide>1</self_collide>
       <inertial>
         <mass>7.439659375</mass>
@@ -2052,7 +2052,7 @@
     
     
     <link name="cubie_0_1_1">
-      <pose>0.0 0.19 0.19 0 0 0</pose>
+      <pose>0.0 0.186 0.186 0 0 0</pose>
       <self_collide>1</self_collide>
       <inertial>
         <mass>7.439659375</mass>
@@ -2156,7 +2156,7 @@
     
     
     <link name="cubie_0_1_-1">
-      <pose>0.0 0.19 -0.19 0 0 0</pose>
+      <pose>0.0 0.186 -0.186 0 0 0</pose>
       <self_collide>1</self_collide>
       <inertial>
         <mass>7.439659375</mass>
@@ -2260,7 +2260,7 @@
     
     
     <link name="cubie_0_1_0">
-      <pose>0.0 0.19 0.0 0 0 0</pose>
+      <pose>0.0 0.186 0.0 0 0 0</pose>
       <self_collide>1</self_collide>
       <inertial>
         <mass>7.439659375</mass>
@@ -2348,7 +2348,7 @@
     
     
     <link name="cubie_0_-1_1">
-      <pose>0.0 -0.19 0.19 0 0 0</pose>
+      <pose>0.0 -0.186 0.186 0 0 0</pose>
       <self_collide>1</self_collide>
       <inertial>
         <mass>7.439659375</mass>
@@ -2452,7 +2452,7 @@
     
     
     <link name="cubie_0_-1_-1">
-      <pose>0.0 -0.19 -0.19 0 0 0</pose>
+      <pose>0.0 -0.186 -0.186 0 0 0</pose>
       <self_collide>1</self_collide>
       <inertial>
         <mass>7.439659375</mass>
@@ -2556,7 +2556,7 @@
     
     
     <link name="cubie_0_-1_0">
-      <pose>0.0 -0.19 0.0 0 0 0</pose>
+      <pose>0.0 -0.186 0.0 0 0 0</pose>
       <self_collide>1</self_collide>
       <inertial>
         <mass>7.439659375</mass>
@@ -2644,7 +2644,7 @@
     
     
     <link name="cubie_0_0_1">
-      <pose>0.0 0.0 0.19 0 0 0</pose>
+      <pose>0.0 0.0 0.186 0 0 0</pose>
       <self_collide>1</self_collide>
       <inertial>
         <mass>7.439659375</mass>
@@ -2731,7 +2731,7 @@
     
     
     <link name="cubie_0_0_-1">
-      <pose>0.0 0.0 -0.19 0 0 0</pose>
+      <pose>0.0 0.0 -0.186 0 0 0</pose>
       <self_collide>1</self_collide>
       <inertial>
         <mass>7.439659375</mass>
@@ -2868,5 +2868,6 @@
     
     
     
+    <plugin name="puzzle_model_plugin" filename="libPuzzleModelPlugin.so"/>
   </model>
 </sdf>
