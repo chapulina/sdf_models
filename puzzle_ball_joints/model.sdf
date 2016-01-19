@@ -1010,11 +1010,6 @@
     </link>
 
     
-      <joint name="fake_joint_1_0_0" type="ball">
-        <parent>cubie_1_0_0</parent>
-        <child>cubie_0_0_0</child>
-      </joint>
-    
 
     
       <joint name="center_joint_1_0_0" type="revolute">
@@ -2033,11 +2028,6 @@
     </link>
 
     
-      <joint name="fake_joint_-1_0_0" type="ball">
-        <parent>cubie_-1_0_0</parent>
-        <child>cubie_0_0_0</child>
-      </joint>
-    
 
     
       <joint name="center_joint_-1_0_0" type="revolute">
@@ -2330,11 +2320,6 @@
     </link>
 
     
-      <joint name="fake_joint_0_1_0" type="ball">
-        <parent>cubie_0_1_0</parent>
-        <child>cubie_0_0_0</child>
-      </joint>
-    
 
     
       <joint name="center_joint_0_1_0" type="revolute">
@@ -2626,11 +2611,6 @@
     </link>
 
     
-      <joint name="fake_joint_0_-1_0" type="ball">
-        <parent>cubie_0_-1_0</parent>
-        <child>cubie_0_0_0</child>
-      </joint>
-    
 
     
       <joint name="center_joint_0_-1_0" type="revolute">
@@ -2714,11 +2694,6 @@
     </link>
 
     
-      <joint name="fake_joint_0_0_1" type="ball">
-        <parent>cubie_0_0_1</parent>
-        <child>cubie_0_0_0</child>
-      </joint>
-    
 
     
       <joint name="center_joint_0_0_1" type="revolute">
@@ -2800,11 +2775,6 @@
       
     </link>
 
-    
-      <joint name="fake_joint_0_0_-1" type="ball">
-        <parent>cubie_0_0_-1</parent>
-        <child>cubie_0_0_0</child>
-      </joint>
     
 
     

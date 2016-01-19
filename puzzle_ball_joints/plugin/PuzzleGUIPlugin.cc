@@ -30,21 +30,21 @@ PuzzleGUIPlugin::PuzzleGUIPlugin()
 {
   this->setStyleSheet(
       "QFrame {"
-        "background-color : rgba(255, 255, 255, 255);"
-        "color : black;"
+        "background-color : black;"
+        "color : white;"
         "font-size: 12px;"
       "}");
 
   auto gridLayout = new QGridLayout();
 
   // Titles
-  auto angleTitle = new QLabel(tr("Angle"));
-  gridLayout->addWidget(angleTitle, 0, 1);
-  gridLayout->setAlignment(angleTitle, Qt::AlignCenter);
+//  auto angleTitle = new QLabel(tr("Angle"));
+//  gridLayout->addWidget(angleTitle, 0, 1);
+//  gridLayout->setAlignment(angleTitle, Qt::AlignCenter);
 
-  auto torqueTitle = new QLabel(tr("Apply Torque"));
-  gridLayout->addWidget(torqueTitle, 0, 2, 1, 2);
-  gridLayout->setAlignment(torqueTitle, Qt::AlignCenter);
+//  auto torqueTitle = new QLabel(tr("Apply Torque"));
+//  gridLayout->addWidget(torqueTitle, 0, 1, 1, 2);
+//  gridLayout->setAlignment(torqueTitle, Qt::AlignCenter);
 
   // U
   gridLayout->addWidget(new QLabel(tr("U")), 1, 0);
@@ -174,16 +174,17 @@ PuzzleGUIPlugin::PuzzleGUIPlugin()
 
   // Torque magnitude
   this->torque = 10000;
-  gridLayout->addWidget(new QLabel(tr("Torque")), 7, 2);
+  gridLayout->addWidget(new QLabel(tr("Torque")), 7, 0, 1, 2);
   auto torque = new QSpinBox();
   torque->setMaximum(1000000);
   torque->setValue(this->torque);
-  gridLayout->addWidget(torque, 7, 3);
+  gridLayout->addWidget(torque, 7, 2, 1, 2);
   this->connect(torque, SIGNAL(valueChanged(int)), this, SLOT(OnTorque(int)));
 
   // Fix center
-  auto fix = new QCheckBox("Fix to world");
-  gridLayout->addWidget(fix, 8, 0, 1, 4);
+  auto fix = new QCheckBox();
+  gridLayout->addWidget(fix, 8, 0);
+  gridLayout->addWidget(new QLabel(tr("Fix to world")), 8, 1, 1, 3);
   this->connect(fix, SIGNAL(toggled(const bool)), this,
       SLOT(OnFix(const bool)));
 
@@ -194,7 +195,7 @@ PuzzleGUIPlugin::PuzzleGUIPlugin()
   mainLayout->addWidget(mainFrame);
   mainLayout->setContentsMargins(0, 0, 0, 0);
   this->setLayout(mainLayout);
-  this->resize(250, 270);
+  this->resize(150, 270);
 
   // Transport
   this->node = transport::NodePtr(new transport::Node());

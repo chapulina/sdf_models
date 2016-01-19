@@ -194,7 +194,7 @@
 
     <%
       # Ball joints from the core to each piece to hold the cube together
-      if !(x == 0 && y == 0 && z == 0)
+      if (x.abs + y.abs + z.abs > 1)
     %>
       <%= "<joint name=" + '"fake_joint_' + x.to_s + '_' + y.to_s + '_' + z.to_s + '" type="ball">' %>
         <%= "<parent>cubie_" + x.to_s + '_' + y.to_s + '_' + z.to_s + '</parent>' %>
