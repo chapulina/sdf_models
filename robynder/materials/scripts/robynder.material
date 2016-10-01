@@ -1,0 +1,13 @@
+material Robynder/Lift
+{
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        texture Robynder_Lift.jpg
+      }
+    }
+  }
+}
