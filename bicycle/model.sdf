@@ -3,16 +3,16 @@
   <model name='bicycle'>
     <link name='frame'>
       <inertial>
-        <mass>1</mass>
+        <mass>17.5609</mass>
         <inertia>
-          <ixx>0.166667</ixx>
+          <ixx>1.49804</ixx>
           <ixy>0</ixy>
           <ixz>0</ixz>
-          <iyy>0.166667</iyy>
+          <iyy>4.85353</iyy>
           <iyz>0</iyz>
-          <izz>0.166667</izz>
+          <izz>3.42476</izz>
         </inertia>
-        <pose frame=''>0 0 0 0 -0 0</pose>
+        <pose frame=''>0 0 1 0 -0 0</pose>
       </inertial>
       <pose frame=''>-0.098 0 0 0 -0 0</pose>
       <gravity>1</gravity>
@@ -103,14 +103,14 @@
     </link>
     <link name='back_wheel'>
       <inertial>
-        <mass>1</mass>
+        <mass>8.79038</mass>
         <inertia>
-          <ixx>0.166667</ixx>
+          <ixx>0.610519</ixx>
           <ixy>0</ixy>
           <ixz>0</ixz>
-          <iyy>0.166667</iyy>
+          <iyy>0.610519</iyy>
           <iyz>0</iyz>
-          <izz>0.166667</izz>
+          <izz>1.19338</izz>
         </inertia>
         <pose frame=''>0 0 0 0 -0 0</pose>
       </inertial>
@@ -303,14 +303,14 @@
     </link>
     <link name='front_wheel'>
       <inertial>
-        <mass>1</mass>
+        <mass>8.79038</mass>
         <inertia>
-          <ixx>0.166667</ixx>
+          <ixx>0.610519</ixx>
           <ixy>0</ixy>
           <ixz>0</ixz>
-          <iyy>0.166667</iyy>
+          <iyy>0.610519</iyy>
           <iyz>0</iyz>
-          <izz>0.166667</izz>
+          <izz>1.19338</izz>
         </inertia>
         <pose frame=''>0 0 0 0 -0 0</pose>
       </inertial>
@@ -401,21 +401,20 @@
         </surface>
       </collision>
     </link>
-<!--
-    <link name='weight'>
+    <link name='mass'>
       <inertial>
-        <mass>0.5</mass>
+        <mass>20.5886</mass>
         <inertia>
-          <ixx>0.00570808</ixx>
+          <ixx>0.213807</ixx>
           <ixy>0</ixy>
           <ixz>0</ixz>
-          <iyy>0.00570808</iyy>
+          <iyy>0.213807</iyy>
           <iyz>0</iyz>
-          <izz>0.00570808</izz>
+          <izz>0.213807</izz>
         </inertia>
         <pose frame=''>0 0 0 0 -0 0</pose>
       </inertial>
-      <pose frame=''>-0.08033 0 1.86894 0 -0 0</pose>
+      <pose frame=''>-0.08033 0 1.93115 0 -0 0</pose>
       <gravity>1</gravity>
       <self_collide>0</self_collide>
       <kinematic>0</kinematic>
@@ -424,19 +423,22 @@
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
           <sphere>
-            <radius>0.168939</radius>
+            <radius>0.161135</radius>
           </sphere>
         </geometry>
         <material>
           <lighting>1</lighting>
           <script>
             <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/Grey</name>
+            <name>Gazebo/CoM</name>
           </script>
           <shader type='vertex'>
             <normal_map>__default__</normal_map>
           </shader>
           <emissive>0 0 0 1</emissive>
+          <ambient>0.3 0.3 0.3 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+          <specular>0.01 0.01 0.01 1</specular>
         </material>
         <transparency>0</transparency>
         <cast_shadows>1</cast_shadows>
@@ -447,7 +449,7 @@
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
           <sphere>
-            <radius>0.168939</radius>
+            <radius>0.161135</radius>
           </sphere>
         </geometry>
         <surface>
@@ -497,19 +499,18 @@
         </surface>
       </collision>
     </link>
--->
     <link name='steer'>
       <inertial>
-        <mass>1</mass>
+        <mass>11.2879</mass>
         <inertia>
-          <ixx>0.166667</ixx>
+          <ixx>1.03759</ixx>
           <ixy>0</ixy>
           <ixz>0</ixz>
-          <iyy>0.166667</iyy>
+          <iyy>1.14743</iyy>
           <iyz>0</iyz>
-          <izz>0.166667</izz>
+          <izz>0.303705</izz>
         </inertia>
-        <pose frame=''>0 0 0 0 -0 0</pose>
+        <pose frame=''>1.1 0 1 0 -0 0</pose>
       </inertial>
       <pose frame=''>-0.098 0 0 0 -0 0</pose>
       <gravity>1</gravity>
@@ -664,10 +665,9 @@
         </ode>
       </physics>
     </joint>
-<!--
-    <joint name='weight_joint' type='prismatic'>
-      <parent>frame</parent>
-      <child>weight</child>
+    <joint name='front_wheel_joint' type='revolute'>
+      <parent>steer</parent>
+      <child>front_wheel</child>
       <pose frame=''>0 0 0 0 -0 0</pose>
       <axis>
         <xyz>0 1 0</xyz>
@@ -682,6 +682,7 @@
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
           <damping>0</damping>
+          <friction>0</friction>
         </dynamics>
       </axis>
       <physics>
@@ -697,17 +698,16 @@
         </ode>
       </physics>
     </joint>
--->
-    <joint name='front_wheel_joint' type='revolute'>
-      <parent>steer</parent>
-      <child>front_wheel</child>
+    <joint name='mass_joint' type='prismatic'>
+      <parent>frame</parent>
+      <child>mass</child>
       <pose frame=''>0 0 0 0 -0 0</pose>
       <axis>
         <xyz>0 1 0</xyz>
         <use_parent_model_frame>0</use_parent_model_frame>
         <limit>
-          <lower>-1.79769e+308</lower>
-          <upper>1.79769e+308</upper>
+          <lower>-1</lower>
+          <upper>1</upper>
           <effort>-1</effort>
           <velocity>-1</velocity>
         </limit>
@@ -767,16 +767,10 @@
     <static>0</static>
     <allow_auto_disable>1</allow_auto_disable>
     <plugin name='keystojoints' filename='libKeysToJointsPlugin.so'>
-      <map key='16777235' joint='back_wheel_joint' scale='3000' type='force'/>
-      <map key='16777237' joint='back_wheel_joint' scale='3000' type='force'/>
-
-      <map key='16777234' joint='steer_joint' scale='1000' type='force' kp='1000' ki='0' kd='20'/>
-      <map key='16777236' joint='steer_joint' scale='-1000' type='force' kp='1000' ki='0' kd='20'/>
-
-<!--
-      <map key='16777234' joint='weight_joint' scale='1000' type='force' kp='1000' ki='0' kd='20'/>
-      <map key='16777236' joint='weight_joint' scale='-1000' type='force' kp='1000' ki='0' kd='20'/>
--->
+      <map key='16777235' joint='back_wheel_joint' scale='10000' type='force' kp='100' ki='0' kd='20'/>
+      <map key='16777237' joint='back_wheel_joint' scale='-10000' type='force' kp='100' ki='0' kd='20'/>
+      <map key='16777234' joint='mass_joint' scale='1000' type='force' kp='1000' ki='0' kd='20'/>
+      <map key='16777236' joint='mass_joint' scale='-1000' type='force' kp='1000' ki='0' kd='20'/>
     </plugin>
   </model>
 </sdf>
